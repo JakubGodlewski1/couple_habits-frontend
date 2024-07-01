@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Butterfly+Kids&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        font-size: 38px;
+        font-weight: 800;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+
+/*RESETS, GLOBAL STYLES*/
+input, textarea {
+    font-size: 16px !important;
+}
+
+* {
+    font-family: "Abhaya Libre", serif;
+    min-width: 0;
+}
+
+
+html, body, :root, main {
+    background-image: linear-gradient(to bottom, #7bd3ea, #89e0de, #a8ebd0, #cff2c5, #f6f7c4);
+
+
+    /*dvh is not globally supported (e.g. firefox does not support it), so vh in here is necessary*/
+    max-height: 100vh;
+    max-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+}
