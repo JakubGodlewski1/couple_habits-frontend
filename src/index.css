@@ -33,7 +33,7 @@ input, textarea {
 }
 
 
-html, body, :root, main {
+html, body, #root, main {
     background-image: linear-gradient(to bottom, #7bd3ea, #89e0de, #a8ebd0, #cff2c5, #f6f7c4);
 
 

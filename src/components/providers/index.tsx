@@ -6,7 +6,7 @@ const Providers = ({children}: PropsWithChildren) => {
     const navigate = useNavigate();
 
     return (
-        <NextUIProvider navigate={navigate}>
+        <NextUIProvider className="h-full" navigate={navigate}>
             {children}
         </NextUIProvider>
     );
