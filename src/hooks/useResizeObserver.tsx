@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const useResizeObserver = (threshold: number, callback: (isGreater: boolean) => void) => {
+const useResizeObserver = (threshold: number) => {
     const [isGreaterThanThreshold, setIsGreaterThanThreshold] = useState(window.innerWidth > threshold);
 
     useEffect(() => {
@@ -8,7 +8,6 @@ const useResizeObserver = (threshold: number, callback: (isGreater: boolean) => 
             const currentWidth = window.innerWidth;
             const isGreater = currentWidth > threshold;
             setIsGreaterThanThreshold(isGreater);
-            callback(isGreater);
         };
 
         // Set initial value
@@ -21,7 +20,7 @@ const useResizeObserver = (threshold: number, callback: (isGreater: boolean) => 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [threshold, callback]);
+    }, [threshold]);
 
     return isGreaterThanThreshold;
 };
