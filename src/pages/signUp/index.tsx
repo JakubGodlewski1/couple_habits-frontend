@@ -30,6 +30,7 @@ const SignUp = () => {
                     {...register("email")}
                 />
                 <Input
+                    role="password"
                     variant="faded"
                     isInvalid={!!errors.password?.message}
                     errorMessage={errors.password?.message}
@@ -39,6 +40,7 @@ const SignUp = () => {
                     {...register("password")}
                 />
                 <Input
+                    role="password-confirmation"
                     variant="faded"
                     isInvalid={!!errors.passwordConfirmation?.message}
                     errorMessage={errors.passwordConfirmation?.message}
