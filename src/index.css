@@ -7,7 +7,7 @@
 @layer base {
     h1 {
         font-size: 38px;
-        font-weight: 800;
+        font-weight: 700;
     }
 
     h2 {
@@ -17,7 +17,7 @@
 
     h3 {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 500;
     }
 }
 

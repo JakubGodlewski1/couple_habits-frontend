@@ -1,22 +1,9 @@
-<<<<<<< Updated upstream
-import MobileView from "./MobileView.tsx";
-import useResizeObserver from "../../hooks/useResizeObserver.tsx";
-import DesktopView from "./DesktopView.tsx";
-import {SCREEN_THRESHOLD} from "../../utils/constants.ts";
-
-const Hero = () => {
-
-    //if screen width is greater than the threshold, the function returns true
-    const isDesktop = useResizeObserver(SCREEN_THRESHOLD);
-
-    return isDesktop ? <DesktopView/> : <MobileView/>;
-=======
-import hero_couple from "../../../assets/ilustrations/hero_couple.png"
+import hero_couple from "../../../assets/ilustrations/hero_couple.png";
 import {Button} from "@nextui-org/react";
 import {Link} from "react-router-dom";
 import {IoIosArrowRoundForward} from "react-icons/io";
 
-const Hero = () => {
+const MobileView = () => {
     return (
         <div className="flex flex-col flex-grow">
             <div className="space-y-3">
@@ -36,7 +23,6 @@ const Hero = () => {
             </Button>
         </div>
     );
->>>>>>> Stashed changes
 };
 
-export default Hero;
+export default MobileView;
