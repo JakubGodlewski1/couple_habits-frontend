@@ -34,4 +34,22 @@ describe('TabBar', () => {
         expect(ideasLink).not.toHaveClass(classesWhenActive)
         expect(dashboardLink).toHaveClass(classesWhenActive)
     });
+
+    it('should go to specific route', async () => {
+        const {elements: {settingsLink, ideasLink, dashboardLink}, user} = renderComponent()
+        let ideasHeading = screen.getByRole("heading", {name: /ideas/i})
+        expect(ideasHeading).toBeInTheDocument()
+
+        await user.click(dashboardLink)
+        const dashboardHeading = screen.getByRole("heading", {name: /dashboard/i})
+        expect(dashboardHeading).toBeInTheDocument()
+
+        await user.click(settingsLink)
+        const settingsHeading = screen.getByRole("heading", {name: /settings/i})
+        expect(settingsHeading).toBeInTheDocument()
+
+        await user.click(ideasLink)
+        ideasHeading = screen.getByRole("heading", {name: /ideas/i})
+        expect(ideasHeading).toBeInTheDocument()
+    });
 });
