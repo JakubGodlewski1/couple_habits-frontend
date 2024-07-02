@@ -6,13 +6,11 @@ import {IoIosArrowRoundForward} from "react-icons/io";
 const DesktopView = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-
     return (
         <>
             <Layout onOpen={onOpen}/>
             <WarningModal isOpen={isOpen} onOpenChange={onOpenChange}/>
         </>
-
     );
 };
 
