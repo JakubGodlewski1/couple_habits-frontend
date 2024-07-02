@@ -1,5 +1,5 @@
 import {screen} from "@testing-library/react";
-import useRenderWithReactRouter from "../../tests/hooks/useRenderWithReactRouter.tsx";
+import renderWithReactRouter from "../../tests/utils/renderWithReactRouter.tsx";
 import {expect} from "vitest";
 import {userEvent} from "@testing-library/user-event";
 
@@ -9,7 +9,9 @@ type SignInData = {
 }
 
 describe('SignUp', () => {
-    const getUtils = () => {
+    const renderComponent = () => {
+        renderWithReactRouter("/sign-in")
+
         const user = userEvent.setup();
 
         const emailInput = screen.getByRole("textbox", {name: /email/i})
@@ -34,8 +36,7 @@ describe('SignUp', () => {
     }
 
     it('should render everything properly', () => {
-        useRenderWithReactRouter("/sign-in")
-        const {elements} = getUtils()
+        const {elements} = renderComponent()
         expect(elements.emailInput).toBeInTheDocument()
         expect(elements.passwordInput).toBeInTheDocument()
         expect(elements.submitButton).toBeInTheDocument()
@@ -43,8 +44,7 @@ describe('SignUp', () => {
     })
 
     it('should show error if email is shorter than 4 characters', async () => {
-        useRenderWithReactRouter("/sign-in")
-        const {fillUpTheForm, user, elements: {emailInput}} = getUtils()
+        const {fillUpTheForm, user, elements: {emailInput}} = renderComponent()
         await fillUpTheForm({password: "password"})
         await user.click(emailInput)
         await user.tab()
@@ -53,8 +53,7 @@ describe('SignUp', () => {
     });
 
     it('should show password error if its shorter than 6 characters', async () => {
-        useRenderWithReactRouter("/sign-in")
-        const {fillUpTheForm, user, elements: {passwordInput}} = getUtils()
+        const {fillUpTheForm, user, elements: {passwordInput}} = renderComponent()
         await fillUpTheForm({password: "12345", email: "emailIsCorrect@wp.pl"})
         await user.click(passwordInput)
         await user.tab()
@@ -81,8 +80,7 @@ describe('SignUp', () => {
     // });
 
     it('should redirect you to sign up page after clicking "sign up" button', async () => {
-        useRenderWithReactRouter("/sign-in")
-        const {user, elements: {redirectLink}} = getUtils()
+        const {user, elements: {redirectLink}} = renderComponent()
         await user.click(redirectLink)
         const signInPage = screen.getByRole("heading", {name: /sign up/i})
         expect(signInPage).toBeInTheDocument()

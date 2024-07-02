@@ -3,7 +3,7 @@ import {expect} from "vitest";
 import Hero from "./index.tsx";
 import {userEvent} from "@testing-library/user-event";
 import {SCREEN_THRESHOLD} from "../../utils/constants.ts";
-import useRenderWithReactRouter from "../../tests/hooks/useRenderWithReactRouter.tsx";
+import renderWithReactRouter from "../../tests/utils/renderWithReactRouter.tsx";
 
 describe('Hero', () => {
     function resizeWindow(width: number) {
@@ -38,7 +38,7 @@ describe('Hero', () => {
 
     it('should redirect you to sign up page if page is smaller or equal SCREEN_THRESHOLD', async () => {
         resizeWindow(SCREEN_THRESHOLD)
-        useRenderWithReactRouter("/")
+        renderWithReactRouter("/")
         const button = screen.getByRole('button', {name: /couple up/i});
         await userEvent.click(button);
         const signUpPage = screen.getByRole("heading", {name: /sign up/i})
