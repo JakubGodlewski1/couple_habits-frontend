@@ -1,8 +1,13 @@
+import TopBar from "./topBar";
+import DashboardToggleScreen from "./dashboardToggleScreen";
+
 const Dashboard = () => {
     return (
-        <h1>
-            Dashboard
-        </h1>
+        <div className="gap-2.5 flex flex-col flex-grow">
+            <TopBar/>
+            <DashboardToggleScreen/>
+        </div>
+
     );
 };
 

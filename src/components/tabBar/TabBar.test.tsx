@@ -41,8 +41,8 @@ describe('TabBar', () => {
         expect(ideasHeading).toBeInTheDocument()
 
         await user.click(dashboardLink)
-        const dashboardHeading = screen.getByRole("heading", {name: /dashboard/i})
-        expect(dashboardHeading).toBeInTheDocument()
+        const dashboardText = screen.getByText(/strike:/i)
+        expect(dashboardText).toBeInTheDocument()
 
         await user.click(settingsLink)
         const settingsHeading = screen.getByRole("heading", {name: /settings/i})

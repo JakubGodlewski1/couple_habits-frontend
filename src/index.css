@@ -21,6 +21,18 @@
     }
 }
 
+@layer components {
+    .glass-container {
+        border-radius: 12px;
+        border: 1px solid #FFF;
+        background: rgba(255, 255, 255, 0.20);
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .bg-gradient {
+        background-image: linear-gradient(to bottom, #7bd3ea, #89e0de, #a8ebd0, #cff2c5, #f6f7c4);
+    }
+}
 
 /*RESETS, GLOBAL STYLES*/
 input, textarea {
