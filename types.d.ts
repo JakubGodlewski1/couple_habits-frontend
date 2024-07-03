@@ -14,13 +14,25 @@ type Target = HTMLInputElement & {
 }
 type FilesEvent = FormEvent<HTMLInputElement> & { target: Target };
 
-//habit
-export type Repeat = "daily" | "weekly"
-export type Specific_days = ("M" | "T" | "W" | "R" | "F" | "S" | "U")[]
-export type Frequency = Repeat | Specific_days
 
-export type Habit = {
-    id: string,
+//habit details
+type Repeat = "daily" | "weekly"
+type Specific_days = {
+    "M": boolean,
+    "T": boolean,
+    "W": boolean,
+    "R": boolean,
+    "F": boolean,
+    "S": boolean,
+    "U": boolean
+}
+
+// type Frequency = Repeat | Specific_days
+type FrequencyType = "repeat" | "specific days"
+type Frequency = { type: "repeat", repeatOption: Repeat } | { type: "specific days", specificDaysOption: Specific_days }
+
+//create Habit - use it in a form when creating or altering a habit
+type CreateHabit = {
     frequency: Frequency,
     details: {
         mine: {
@@ -33,6 +45,9 @@ export type Habit = {
         }
     }
 }
+
+type Habit = CreateHabit & { id: string }
+
 
 //user (data from the server containing all the necessary information)
 type User = {

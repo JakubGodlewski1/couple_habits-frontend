@@ -40,7 +40,7 @@ const WarningModal = ({isOpen, onOpenChange}: {
 }) => {
 
     return <>
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal placement="top" isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>
                 {(onClose) => (
                     <>

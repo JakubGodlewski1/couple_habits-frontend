@@ -1,5 +1,6 @@
 import {IoMdAdd} from "react-icons/io";
 import {useDisclosure} from "@nextui-org/react";
+import HabitModalForm from "../../../forms/habitModalForm";
 
 const TopBar = () => {
 
@@ -12,16 +13,14 @@ const TopBar = () => {
                     <span>Strike: </span>
                     <span className="font-bold">0 days</span>
                 </div>
-                <div>
-                    <span>Points: </span>
-                    <span className="font-bold">0</span>
-                </div>
             </div>
             <button
+                aria-label="add"
                 onClick={onOpen}
                 className="glass-container w-11 h-11 flex items-center justify-center">
                 <IoMdAdd size={28}/>
             </button>
+            <HabitModalForm onClose={onClose} isOpen={isOpen} onOpenChange={onOpenChange}/>
         </div>
     );
 };
