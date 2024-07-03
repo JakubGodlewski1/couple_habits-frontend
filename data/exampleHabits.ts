@@ -1,6 +1,7 @@
 import {Habit} from "../types";
 
 export const exampleHabits: Habit[] = [
+
     {
         id: "1",
         frequency: {
@@ -8,19 +9,19 @@ export const exampleHabits: Habit[] = [
             repeatOption: "daily"
         },
         details: {
-            mine: {label: "Run 5 km", completed: false},
-            partner: {label: "Walk 3 km", completed: true}
+            mine: {label: "Read 20 pages of a book", completed: true},
+            partner: {label: "Read 20 pages of a book", completed: false}
         }
     },
     {
         id: "2",
         frequency: {
             type: "repeat",
-            repeatOption: "weekly"
+            repeatOption: "daily"
         },
         details: {
-            mine: {label: "Read 20 pages of a book", completed: true},
-            partner: {label: "Discuss the book with a friend", completed: false}
+            mine: {label: "Run 5 km", completed: false},
+            partner: {label: "Walk 3 km", completed: true}
         }
     },
     {

@@ -15,7 +15,7 @@ const HabitCard = ({readOnly, habit: {details: {mine, partner}}}: Props) => {
                     {!readOnly &&
                         <Checkbox
                             isSelected={mine.completed}
-                            color={mine.completed ? "success" : "danger"}
+                            color={mine.completed ? "success" : undefined}
                         />
                     }
                     <span>{mine.label}</span>

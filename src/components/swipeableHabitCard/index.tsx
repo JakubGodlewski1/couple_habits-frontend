@@ -3,6 +3,8 @@ import {IoTrashBinOutline} from "react-icons/io5";
 import {CiEdit} from "react-icons/ci";
 import {Habit} from "../../../types";
 import HabitCard from "../habitCard";
+import {useDisclosure} from "@nextui-org/react";
+import HabitModalForm from "../../forms/habitModalForm";
 
 
 type Props = {
@@ -12,18 +14,25 @@ type Props = {
 
 const SwipeableHabitCard = ({readOnly = false, habit}: Props) => {
     const {handlers, isOpen} = useSwipe()
+    const {isOpen: isOpenModal, onOpenChange, onClose, onOpen} = useDisclosure()
 
     return (
         <div className="relative overflow-hidden transition-all glass-container min-h-[90px]">
             <div className="relative z-20 transition-all min-h-[90px]" {...handlers} style={{right: isOpen ? 150 : 0}}>
                 <HabitCard readOnly={readOnly} habit={habit}/>
             </div>
-            <button className="absolute right-4 top-[50%] glass-container -translate-y-1/2 bg-white rounded-md p-2">
+            <button
+                className="absolute right-4 top-[50%] glass-container -translate-y-1/2 bg-white rounded-md p-2"
+            >
                 <IoTrashBinOutline size={26}/>
             </button>
-            <button className="absolute right-20 top-[50%] glass-container -translate-y-1/2 bg-white rounded-md p-2">
+            <button
+                onClick={onOpen}
+                className="absolute right-20 top-[50%] glass-container -translate-y-1/2 bg-white rounded-md p-2"
+            >
                 <CiEdit size={26}/>
             </button>
+            <HabitModalForm habit={habit} isOpen={isOpenModal} onOpenChange={onOpenChange} onClose={onClose}/>
         </div>
     );
 };

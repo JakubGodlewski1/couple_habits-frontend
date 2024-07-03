@@ -2,6 +2,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Checkb
 import {CreateHabit, Frequency, Habit} from "../../../types";
 import {useState} from "react";
 import FrequencyTabs from "./frequencyTabs";
+import {produce} from "immer";
 
 type Props = {
     habit?: Habit,
@@ -29,8 +30,9 @@ const initialHabit: CreateHabit = {
 
 const HabitModalForm = ({habit, isOpen, onOpenChange, onClose}: Props) => {
     const [habitForm, setHabitForm] = useState(habit || initialHabit)
+    const areHabitsTheSame = habit && habit.details.mine.label === habit.details.partner.label
 
-    const [partnerHabitVisible, setPartnerHabitVisible] = useState(false);
+    const [partnerHabitVisible, setPartnerHabitVisible] = useState(!areHabitsTheSame);
     const onSubmit = async () => {
 
         //send habit to db
@@ -63,18 +65,16 @@ const HabitModalForm = ({habit, isOpen, onOpenChange, onClose}: Props) => {
                                     </Checkbox>
                                     <form onSubmit={onSubmit} className="mt-8 flex flex-col flex-grow gap-2">
                                         <Input
-                                            value={undefined}
-                                            onValueChange={() => {
-                                            }}
+                                            value={habitForm.details.mine.label}
+                                            onValueChange={value => setHabitForm(produce(draft => draft.details.mine.label = value))}
                                             errorMessage={"error"}
                                             label={partnerHabitVisible ? "Your habit" : "Your habits"}
                                             placeholder="Running at least 10 minutes"
                                         />
                                         {partnerHabitVisible &&
                                             <Input
-                                                value={undefined}
-                                                onValueChange={() => {
-                                                }}
+                                                value={habitForm.details.partner.label}
+                                                onValueChange={value => setHabitForm(produce(draft => draft.details.partner.label = value))}
                                                 errorMessage={"error"}
                                                 label="Partner's habit"
                                                 placeholder="Reading 3 pages or more of non-fiction"

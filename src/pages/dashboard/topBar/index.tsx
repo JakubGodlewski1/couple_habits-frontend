@@ -2,7 +2,7 @@ import {IoMdAdd} from "react-icons/io";
 import {useDisclosure} from "@nextui-org/react";
 import HabitModalForm from "../../../forms/habitModalForm";
 
-const TopBar = () => {
+const TopBar = ({strike}: { strike: number }) => {
 
     const {isOpen, onOpenChange, onOpen, onClose} = useDisclosure()
 
@@ -10,8 +10,8 @@ const TopBar = () => {
         <div className="flex gap-2.5">
             <div className="flex-grow glass-container flex justify-between px-4 items-center text-lg">
                 <div>
-                    <span>Strike: </span>
-                    <span className="font-bold">0 days</span>
+                    <span>Strike:</span>
+                    <span className="font-bold"> {strike} {strike === 1 ? "day" : "days"}</span>
                 </div>
             </div>
             <button
